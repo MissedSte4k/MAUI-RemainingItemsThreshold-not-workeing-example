@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:TestImages"
+			 Loaded="ContentPage_Loaded"
+             x:Class="TestImages.MainPage">
+
+	<CollectionView ItemsSource="{Binding Animals}" SelectionMode="Single" SelectedItem="{Binding SelectedAnimal}" ItemsUpdatingScrollMode="KeepItemsInView" RemainingItemsThreshold="5" RemainingItemsThresholdReachedCommand="{Binding RemainingItemsThresholdReachedCommand}" >
+		<CollectionView.ItemTemplate>
+			<DataTemplate >
+				<Frame>
+					<StackLayout Grid.Column="1">
+						<Label Text="{Binding Name}"/>
+						<Image Source="{Binding Image}" HeightRequest="300"/>
+					</StackLayout>
+				</Frame>
+			</DataTemplate>
+		</CollectionView.ItemTemplate>
+		<CollectionView.Footer>
+			<Button Command="{Binding RemainingItemsThresholdReachedCommand}" Text="Add" />
+		</CollectionView.Footer>
+	</CollectionView>
+
+
+</ContentPage>
